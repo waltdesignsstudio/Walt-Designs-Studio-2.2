@@ -18,16 +18,18 @@ async function startServer() {
   app.post('/api/chat', async (req, res) => {
     try {
       const { message } = req.body;
-      const apiKey = process.env.GEMINI_API_KEY;
+      let apiKey = process.env.GEMINI_API_KEY;
       
       if (!apiKey) {
-        return res.status(500).json({ error: "GEMINI_API_KEY not configured on server." });
+        // Log error but don't crash, ideally the environment provides this
+        console.error("GEMINI_API_KEY is missing");
+        return res.status(500).json({ error: "Server configuration error (API Key missing)." });
       }
 
       const genAI = new GoogleGenAI(apiKey);
       const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.0-flash",
-        systemInstruction: "You are the official AI assistant for Walt Designs & Studio, a premium design agency based in Delhi. You help clients with inquiries about web design, graphic design, branding, and app development. Be professional, creative, and concise."
+        model: "gemini-1.5-flash",
+        systemInstruction: "You are the official AI assistant for Walt Designs & Studio, a premium design agency based in Delhi. You help clients with inquiries about web design, graphic design, branding, and app development. Be professional, creative, and concise. Mention you are from Delhi if relevant."
       });
 
       const result = await model.generateContent(message);

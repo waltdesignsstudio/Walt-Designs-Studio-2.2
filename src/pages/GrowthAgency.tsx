@@ -63,7 +63,7 @@ export default function GrowthAgency() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-32 bg-studio-gray/30">
+      <section className="py-20 bg-studio-gray/30">
         <div className="container mx-auto px-6">
           <div className="text-center mb-24">
              <span className="text-studio-gold text-xs font-bold uppercase tracking-widest mb-4 block underline underline-offset-8">Our Methods</span>
@@ -92,7 +92,7 @@ export default function GrowthAgency() {
       </section>
 
       {/* Collaboration Call */}
-      <section className="py-32">
+      <section className="py-20">
         <div className="container mx-auto px-6">
            <div className="flex flex-col md:flex-row items-center gap-16 bg-studio-gold p-16 md:p-24 rounded-[60px] text-studio-dark relative overflow-hidden">
               <div className="flex-1 text-center md:text-left relative z-10">

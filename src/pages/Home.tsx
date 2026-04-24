@@ -31,8 +31,8 @@ const Marquee = ({ text, speed = 20, className = "" }: { text: string; speed?: n
       transition={{ duration: speed, repeat: Infinity, ease: "linear" }}
       className="inline-block"
     >
-      {[...Array(10)].map((_, i) => (
-        <span key={i} className="text-studio-gold text-2xl font-serif italic mx-8 uppercase tracking-[0.2em]">
+      {[...Array(8)].map((_, i) => (
+        <span key={i} className="text-studio-gold text-lg font-sans font-bold mx-12 uppercase tracking-widest whitespace-nowrap">
           {text} •
         </span>
       ))}
@@ -43,7 +43,7 @@ const Marquee = ({ text, speed = 20, className = "" }: { text: string; speed?: n
 export default function Home() {
   return (
     <div className="flex flex-col bg-studio-navy-green min-h-screen">
-      <Marquee text="CREATIVE STUDIO • WEB DESIGN • BRANDING • GROWTH • PREMIUM SOLUTIONS • BESPOKE DEVELOPMENT" speed={30} className="bg-studio-gold text-studio-dark border-none py-1 font-bold italic" />
+      <Marquee text="CREATIVE STUDIO • WEB DESIGN • BRANDING • GROWTH • PREMIUM SOLUTIONS • BESPOKE DEVELOPMENT" speed={25} className="bg-studio-gold text-studio-dark border-none py-2 font-bold" />
       
       {/* Hero Section */}
       <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-studio-navy-green">
@@ -99,10 +99,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-12 text-center text-white">
             {[
-              { label: 'Clients Served', value: '150+', icon: <Users size={24} /> },
-              { label: 'Projects Completed', value: '450+', icon: <CheckCircle2 size={24} /> },
-              { label: 'Creative Awards', value: '120', icon: <Trophy size={24} /> },
-              { label: 'Excellence', value: '5+', icon: <Calendar size={24} /> },
+              { label: 'Creative Minds', value: 'Elite', icon: <Users size={24} /> },
+              { label: 'Industries Covered', value: 'Global', icon: <Globe size={24} /> },
+              { label: 'Digital Innovation', value: 'Peak', icon: <Trophy size={24} /> },
+              { label: 'Premium Quality', value: 'A++', icon: <CheckCircle2 size={24} /> },
             ].map((stat, i) => (
               <motion.div 
                 key={i}
@@ -124,7 +124,7 @@ export default function Home() {
       </section>
 
       {/* Core Specialties */}
-      <section className="py-32 bg-studio-brown/50">
+      <section className="py-20 bg-studio-brown/50">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end gap-12 mb-20">
             <div className="max-w-2xl text-white">
@@ -179,25 +179,49 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonial Quote - Updated for Navy Orange theme */}
-      <section className="py-32 bg-studio-navy-orange text-white relative overflow-hidden font-bold">
-         <div className="absolute top-[-50px] right-[-50px] text-[300px] opacity-5 font-serif leading-none italic pointer-events-none">"</div>
-         <div className="container mx-auto px-6 relative z-10 text-center max-w-4xl">
-            <div className="flex flex-col items-center gap-6 mb-12">
-              <div className="flex gap-1 text-studio-gold">
-                {[...Array(4)].map((_, i) => <Star key={i} fill="currentColor" size={24} />)}
-                <StarHalf fill="currentColor" size={24} />
-              </div>
-              <span className="text-sm font-bold tracking-widest uppercase opacity-80">4.2 / 5 Platform Rating</span>
+      {/* Testimonials Quote Section */}
+      <section className="py-20 bg-studio-navy-orange text-white relative overflow-hidden font-bold">
+         <div className="container mx-auto px-6 relative z-10">
+            <div className="flex flex-col items-center gap-6 mb-16">
+              <span className="text-sm font-bold tracking-widest uppercase opacity-80 underline underline-offset-8 decoration-studio-gold">Client Success Stories</span>
+              <h2 className="font-serif text-4xl md:text-6xl font-bold text-white">What Our Partners Say</h2>
             </div>
             
-            <p className="font-serif text-3xl md:text-5xl italic font-bold leading-relaxed mb-12">
-              "Walt Designs transformed our commercial presence. Their attention to detail and premium studio approach is unmatched in the industry."
-            </p>
-            
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-12 h-[2px] bg-studio-gold/40"></div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] opacity-60">Industrial Partner</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[
+                {
+                  client: "Mithila Catering Service",
+                  quote: "Walt Designs transformed our digital presence. Their attention to premium detail in web aesthetics helped us capture the true essence of our catering brand.",
+                  rating: 5
+                },
+                {
+                  client: "Kaushik Caterers",
+                  quote: "The branding expertise at Walt is exceptional. They didn't just design a logo; they built a visual legacy that resonates with our high-end clients.",
+                  rating: 5
+                },
+                {
+                  client: "Kaushalayan Consulting",
+                  quote: "A growth-oriented agency that actually delivers. Our platform's engagement increased significantly after their strategic UI/UX intervention.",
+                  rating: 5
+                }
+              ].map((testimonial, i) => (
+                <motion.div 
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-black/20 p-10 rounded-[40px] border border-white/5 flex flex-col gap-6"
+                >
+                  <div className="flex gap-1 text-studio-gold">
+                    {[...Array(testimonial.rating)].map((_, j) => <Star key={j} fill="currentColor" size={16} />)}
+                  </div>
+                  <p className="italic font-medium leading-relaxed opacity-90">"{testimonial.quote}"</p>
+                  <div className="mt-auto pt-6 border-t border-white/10">
+                    <span className="text-studio-gold text-xs font-bold uppercase tracking-widest">{testimonial.client}</span>
+                  </div>
+                </motion.div>
+              ))}
             </div>
          </div>
       </section>

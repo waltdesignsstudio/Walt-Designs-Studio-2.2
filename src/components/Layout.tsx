@@ -36,33 +36,38 @@ export function Header() {
       id="header"
     >
       <div className="container mx-auto px-6 flex justify-between items-center">
-        <a href="/" className="flex items-center gap-3">
+        <Link to="/" className="flex items-center gap-3">
           <img src={LOGO_URL} alt="Walt Designs & Studio" className="w-10 h-10 object-cover rounded-md" />
-          <span className="font-serif text-xl font-semibold tracking-tight">
-            Walt Designs <span className="text-studio-gold">& Studio</span>
-          </span>
-        </a>
+          <div className="flex flex-col">
+            <span className="font-serif text-xl font-semibold tracking-tight leading-none">
+              Walt Designs <span className="text-studio-gold">& Studio</span>
+            </span>
+            <span className="text-[10px] text-studio-white/60 uppercase tracking-widest font-bold mt-1">
+              (+with Digital Growth Agency)
+            </span>
+          </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-8">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.path}
-              href={link.path}
+              to={link.path}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-studio-gold uppercase tracking-widest",
                 location.pathname === link.path ? "text-studio-gold border-b border-studio-gold pb-1" : "text-studio-white/80"
               )}
             >
               {link.name}
-            </a>
+            </Link>
           ))}
-          <a 
-            href="/contact" 
+          <Link 
+            to="/contact" 
             className="px-6 py-2 bg-studio-gold text-studio-dark font-bold rounded-full text-xs uppercase tracking-widest hover:bg-white transition-all transform hover:scale-105"
           >
             Book Now
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile Toggle */}
@@ -85,9 +90,9 @@ export function Header() {
           >
             <div className="flex flex-col gap-6">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.path}
-                  href={link.path}
+                  to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className={cn(
                     "text-lg font-medium tracking-wide uppercase",
@@ -95,15 +100,15 @@ export function Header() {
                   )}
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
-              <a 
-                href="/contact" 
+              <Link 
+                to="/contact" 
                 onClick={() => setIsMobileMenuOpen(false)}
                 className="w-full py-4 bg-studio-gold text-studio-dark font-bold text-center rounded-xl uppercase tracking-widest"
               >
                 Book Now
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
