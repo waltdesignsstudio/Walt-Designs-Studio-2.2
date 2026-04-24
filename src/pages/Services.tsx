@@ -83,18 +83,18 @@ const HiringMarquee = () => (
 
 export default function Services() {
   return (
-    <div className="flex flex-col pb-32 bg-studio-navy-yellow min-h-screen">
+    <div className="flex flex-col pb-20 bg-studio-navy-yellow min-h-screen">
       <HiringMarquee />
       
       {/* Header */}
-      <section className="pt-16 pb-16 bg-studio-gray/5 border-b border-white/5">
+      <section className="pt-16 pb-16 bg-studio-gray/5 border-b border-white/5 mb-0">
         <div className="container mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
             <h1 className="font-serif text-5xl md:text-7xl font-bold mb-6 text-white italic">Our <span className="text-studio-gold">Expertise</span></h1>
-            <p className="text-studio-white/60 max-w-2xl mx-auto font-light leading-relaxed">
+            <p className="text-studio-white/80 max-w-2xl mx-auto font-medium leading-relaxed italic">
               We provide a comprehensive suite of creative and technical services designed to help you succeed in the digital-first economy.
             </p>
           </motion.div>
@@ -102,7 +102,7 @@ export default function Services() {
       </section>
 
       {/* Services Grid */}
-      <section className="py-24">
+      <section className="py-20 mb-0">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {SERVICES.map((service, index) => (
@@ -112,24 +112,24 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -12 }}
-                className="group p-10 bg-studio-gray/50 rounded-3xl border border-white/5 hover:border-studio-gold/40 transition-all flex flex-col items-start gap-8 relative overflow-hidden"
+                whileHover={{ y: -8 }}
+                className="group p-10 bg-black/20 rounded-3xl border border-white/5 hover:border-studio-gold/40 transition-all flex flex-col items-start gap-8 relative overflow-hidden"
               >
-                <div className="absolute top-0 right-0 p-8 opacity-5 font-serif text-8xl font-bold italic select-none">
+                <div className="absolute top-0 right-0 p-8 opacity-5 font-serif text-8xl font-bold italic select-none text-white">
                   0{index + 1}
                 </div>
                 <div className="bg-studio-dark p-4 rounded-2xl border border-white/5 shadow-xl">
                   {service.icon}
                 </div>
                 <div>
-                  <h3 className="text-2xl font-serif font-bold mb-4">{service.title}</h3>
-                  <p className="text-studio-white/50 text-sm leading-relaxed mb-8 font-light">
+                  <h3 className="text-2xl font-serif font-bold mb-4 text-white uppercase tracking-tight">{service.title}</h3>
+                  <p className="text-studio-white/60 text-sm leading-relaxed mb-8 font-light italic">
                     {service.desc}
                   </p>
-                  <ul className="grid grid-cols-2 gap-y-3 font-medium text-[11px] uppercase tracking-widest text-studio-gold/80">
+                  <ul className="grid grid-cols-2 gap-y-3 font-bold text-[10px] uppercase tracking-widest text-studio-gold">
                     {service.features.map(f => (
                       <li key={f} className="flex items-center gap-2">
-                        <div className="w-1.5 h-1.5 rounded-full bg-studio-gold/40"></div>
+                        <div className="w-1.5 h-1.5 rounded-full bg-studio-gold"></div>
                         {f}
                       </li>
                     ))}
@@ -142,7 +142,7 @@ export default function Services() {
       </section>
 
       {/* Hiring Section */}
-      <section className="container mx-auto px-6 mt-16">
+      <section className="container mx-auto px-6 mt-10">
         <motion.div 
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}

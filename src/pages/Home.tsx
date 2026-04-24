@@ -43,10 +43,10 @@ const Marquee = ({ text, speed = 20, className = "" }: { text: string; speed?: n
 export default function Home() {
   return (
     <div className="flex flex-col bg-studio-navy-green min-h-screen">
-      <Marquee text="CREATIVE STUDIO • WEB DESIGN • BRANDING • GROWTH" speed={80} className="bg-studio-wine/50 border-none py-2" />
+      <Marquee text="CREATIVE STUDIO • WEB DESIGN • BRANDING • GROWTH • PREMIUM SOLUTIONS • BESPOKE DEVELOPMENT" speed={30} className="bg-studio-gold text-studio-dark border-none py-1 font-bold italic" />
       
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-studio-navy-green">
+      <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden bg-studio-navy-green">
         <div className="absolute inset-0 z-0">
           <DigitalBackground />
           <div className="absolute inset-0 bg-gradient-to-b from-studio-navy-green/40 via-studio-navy-green/80 to-studio-navy-green z-10"></div>
@@ -93,8 +93,6 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
-
-      <Marquee text="Premium Digital Studio • Bespoke Development • Strategic Branding • Luxury Excellence" speed={120} />
 
       {/* Featured Stats - Updated to Navy Orange */}
       <section className="py-20 bg-studio-navy-orange border-y border-white/5">

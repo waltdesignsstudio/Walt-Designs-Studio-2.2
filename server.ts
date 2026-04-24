@@ -39,66 +39,37 @@ async function startServer() {
     }
   });
 
-  // Clean URL Mapping
-  const pageMap: Record<string, string> = {
-    '/': 'index.html',
-    '/services': 'services.html',
-    '/about': 'about-us.html',
-    '/about-us': 'about-us.html',
-    '/portfolio': 'portfolio.html',
-    '/contact': 'contact.html',
-    '/growth-agency': 'growth-agency.html',
-  };
-
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
       server: { middlewareMode: true },
-      appType: 'custom',
+      appType: 'spa',
     });
 
     app.use(vite.middlewares);
 
     app.get('*', async (req, res, next) => {
       const url = req.originalUrl;
-      const targetFile = pageMap[url] || pageMap[url.split('?')[0]];
+      
+      if (url.startsWith('/api') || url.includes('.')) {
+        return next();
+      }
 
-      if (targetFile) {
-        try {
-          const filePath = path.resolve(__dirname, targetFile);
-          const template = fs.readFileSync(filePath, 'utf-8');
-          const html = await vite.transformIndexHtml(url, template);
-          res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-        } catch (e) {
-          vite.ssrFixStacktrace(e as Error);
-          next(e);
-        }
-      } else if (!url.includes('.')) {
-        // Fallback for clean URLs not in map to index.html
-        try {
-          const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
-          const html = await vite.transformIndexHtml(url, template);
-          res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
-        } catch (e) {
-          next(e);
-        }
-      } else {
-        next();
+      try {
+        const template = fs.readFileSync(path.resolve(__dirname, 'index.html'), 'utf-8');
+        const html = await vite.transformIndexHtml(url, template);
+        res.status(200).set({ 'Content-Type': 'text/html' }).end(html);
+      } catch (e) {
+        vite.ssrFixStacktrace(e as Error);
+        next(e);
       }
     });
 
   } else {
-    const distPath = path.join(process.cwd(), 'dist');
+    const distPath = path.resolve(__dirname, 'dist');
     app.use(express.static(distPath));
 
     app.get('*', (req, res) => {
-      const url = req.originalUrl.split('?')[0];
-      const targetFile = pageMap[url];
-      
-      if (targetFile) {
-        res.sendFile(path.join(distPath, targetFile));
-      } else {
-        res.sendFile(path.join(distPath, 'index.html'));
-      }
+      res.sendFile(path.resolve(distPath, 'index.html'));
     });
   }
 

@@ -31,57 +31,57 @@ export default function Contact() {
       <FlashingMarquee text="FAST SERVICE • PREMIUM SUPPORT • EXPERT CONSULTATION • REAL RESULTS" />
       
       {/* Header */}
-      <section className="container mx-auto px-6 py-12 text-center">
+      <section className="container mx-auto px-6 py-12 text-center mb-0">
         <motion.div
            initial={{ opacity: 0, y: 20 }}
            animate={{ opacity: 1, y: 0 }}
         >
           <h1 className="font-serif text-5xl md:text-8xl font-bold mb-8 italic text-white line-clamp-1">Let's <span className="text-studio-gold">Connect</span></h1>
-          <p className="text-studio-white/60 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-studio-white/80 max-w-2xl mx-auto font-medium leading-relaxed italic">
             Whether you have a groundbreaking idea or a complex business challenge, we are here to help you scale.
           </p>
         </motion.div>
       </section>
 
-      <section className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20">
+      <section className="container mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 pb-20">
         {/* Contact Info */}
-        <div className="flex flex-col gap-12">
-          <div className="space-y-6">
-            <h2 className="text-4xl font-serif font-bold italic">Contact Details</h2>
-            <p className="text-studio-white/50 leading-relaxed max-w-md">Reach out directly to our leadership team or visit our headquarters in the heart of the capital.</p>
+        <div className="flex flex-col gap-10">
+          <div className="space-y-4">
+            <h2 className="text-4xl font-serif font-bold italic text-white">Contact Details</h2>
+            <p className="text-studio-white/60 leading-relaxed max-w-md italic">Reach out directly to our leadership team or visit our headquarters in the heart of the capital.</p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="p-8 bg-studio-gray rounded-3xl border border-white/5 flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="p-8 bg-black/20 rounded-3xl border border-white/5 flex flex-col gap-4">
               <span className="text-studio-gold font-bold text-xs uppercase tracking-widest">Founder</span>
-              <h3 className="text-xl font-bold">Priyanshu Kumar</h3>
-              <a href="tel:+919717018044" className="text-sm hover:text-studio-gold">+91 9717018044</a>
+              <h3 className="text-xl font-bold text-white">Priyanshu Kumar</h3>
+              <a href="tel:+919717018044" className="text-sm text-white/70 hover:text-studio-gold transition-colors">+91 9717018044</a>
             </div>
-            <div className="p-8 bg-studio-gray rounded-3xl border border-white/5 flex flex-col gap-4">
+            <div className="p-8 bg-black/20 rounded-3xl border border-white/5 flex flex-col gap-4">
               <span className="text-studio-gold font-bold text-xs uppercase tracking-widest">Business Manager</span>
-              <h3 className="text-xl font-bold">Sahil Kuumar</h3>
-              <a href="tel:+917303942175" className="text-sm hover:text-studio-gold">+91 7303942175</a>
+              <h3 className="text-xl font-bold text-white">Sahil Kuumar</h3>
+              <a href="tel:+917303942175" className="text-sm text-white/70 hover:text-studio-gold transition-colors">+91 7303942175</a>
             </div>
-            <div className="p-8 bg-studio-gray rounded-3xl border border-white/5 flex flex-col gap-4">
+            <div className="p-8 bg-black/20 rounded-3xl border border-white/5 flex flex-col gap-4">
               <span className="text-studio-gold font-bold text-xs uppercase tracking-widest">Collaborations</span>
-              <h3 className="text-xl font-bold">Partnerships</h3>
-              <a href="tel:+919818900077" className="text-sm hover:text-studio-gold">+91 9818900077</a>
+              <h3 className="text-xl font-bold text-white">Partnerships</h3>
+              <a href="tel:+919818900077" className="text-sm text-white/70 hover:text-studio-gold transition-colors">+91 9818900077</a>
             </div>
-            <div className="p-8 bg-studio-gray rounded-3xl border border-white/5 flex flex-col gap-4">
+            <div className="p-8 bg-black/20 rounded-3xl border border-white/5 flex flex-col gap-4">
               <span className="text-studio-gold font-bold text-xs uppercase tracking-widest">Email</span>
-              <h3 className="text-xl font-bold">General Inbox</h3>
-              <a href="mailto:waltdesignsstudio@gmail.com" className="text-sm hover:text-studio-gold truncate">waltdesignsstudio@gmail.com</a>
+              <h3 className="text-xl font-bold text-white uppercase tracking-tighter">General Inbox</h3>
+              <a href="mailto:waltdesignsstudio@gmail.com" className="text-[11px] text-white/70 hover:text-studio-gold transition-colors truncate">waltdesignsstudio@gmail.com</a>
             </div>
           </div>
 
           <div className="space-y-4">
              <div className="flex items-center gap-4 p-6 bg-studio-gold/5 rounded-2xl border border-studio-gold/10">
                 <MapPin className="text-studio-gold" size={24} />
-                <span className="text-sm font-medium tracking-wide">Head Office: Delhi, India</span>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-white/80">Head Office: Delhi, India</span>
              </div>
-             <div className="flex items-center gap-4 p-6 bg-studio-gold/5 rounded-2xl border border-studio-gold/10">
+             <div className="flex items-center gap-4 p-6 bg-studio-gold/10 rounded-2xl border border-studio-gold/20">
                 <Briefcase className="text-studio-gold" size={24} />
-                <span className="text-sm font-medium tracking-wide">Career Hiring: Sales Marketing Manager (Open)</span>
+                <span className="text-[11px] font-bold uppercase tracking-widest text-studio-gold">Hiring: Sales Marketing Manager (Open)</span>
              </div>
           </div>
         </div>
@@ -91,7 +91,7 @@ export default function Contact() {
            initial={{ opacity: 0, x: 30 }}
            whileInView={{ opacity: 1, x: 0 }}
            viewport={{ once: true }}
-           className="bg-studio-gray p-8 md:p-12 rounded-[50px] border border-white/5 shadow-2xl relative"
+           className="bg-black/20 p-8 md:p-12 rounded-[50px] border border-white/5 shadow-2xl relative"
         >
            <form onSubmit={handleSubmit} className="flex flex-col gap-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
